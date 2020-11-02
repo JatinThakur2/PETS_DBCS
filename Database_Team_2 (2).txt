@@ -1,0 +1,255 @@
+mysql> create database petsdbcs;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use petsdbcs;
+Database changed
+mysql> create table lifecycles(lifecycles_id int PRIMARY KEY AUTO_INCREMENT, lifecycles_name varchar(255) NOT NULL, lifecycles_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> describe lifecycles;
++------------------------+--------------+------+-----+---------+----------------+
+| Field                  | Type         | Null | Key | Default | Extra          |
++------------------------+--------------+------+-----+---------+----------------+
+| lifecycles_id          | int          | NO   | PRI | NULL    | auto_increment |
+| lifecycles_name        | varchar(255) | NO   |     | NULL    |                |
+| lifecycles_description | varchar(255) | NO   |     | NULL    |                |
++------------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> create table steps(steps_id int PRIMARY KEY AUTO_INCREMENT, steps_name varchar(255) NOT NULL, steps_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> describe steps;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| steps_id          | int          | NO   | PRI | NULL    | auto_increment |
+| steps_name        | varchar(255) | NO   |     | NULL    |                |
+| steps_description | varchar(255) | NO   |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table roles(roles_id int PRIMARY KEY AUTO_INCREMENT, roles_name varchar(255) NOT NULL, roles_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> describe roles;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| roles_id          | int          | NO   | PRI | NULL    | auto_increment |
+| roles_name        | varchar(255) | NO   |     | NULL    |                |
+| roles_description | varchar(255) | NO   |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table effortcategories(effortcategories_id int PRIMARY KEY AUTO_INCREMENT, effortcategories_name varchar(255) NOT NULL, effortcategories_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> describe effortcategories;
++------------------------------+--------------+------+-----+---------+----------------+
+| Field                        | Type         | Null | Key | Default | Extra          |
++------------------------------+--------------+------+-----+---------+----------------+
+| effortcategories_id          | int          | NO   | PRI | NULL    | auto_increment |
+| effortcategories_name        | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_description | varchar(255) | NO   |     | NULL    |                |
++------------------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table artifacts(artifacts_id int PRIMARY KEY AUTO_INCREMENT, artifacts_name varchar(255) NOT NULL, artifacts_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> describe artifacts;
++-----------------------+--------------+------+-----+---------+----------------+
+| Field                 | Type         | Null | Key | Default | Extra          |
++-----------------------+--------------+------+-----+---------+----------------+
+| artifacts_id          | int          | NO   | PRI | NULL    | auto_increment |
+| artifacts_name        | varchar(255) | NO   |     | NULL    |                |
+| artifacts_description | varchar(255) | NO   |     | NULL    |                |
++-----------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table tasks(tasks_id int PRIMARY KEY AUTO_INCREMENT, tasks_name varchar(255) NOT NULL, tasks_description varchar(255) NOT NULL, tasks_usedartifact varchar(255) NOT NULL, tasks_producedartifact varchar(255) NOT NULL, tasks_role varchar(255) NOT NULL, tasks_effortcategories varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> describe tasks;
++------------------------+--------------+------+-----+---------+----------------+
+| Field                  | Type         | Null | Key | Default | Extra          |
++------------------------+--------------+------+-----+---------+----------------+
+| tasks_id               | int          | NO   | PRI | NULL    | auto_increment |
+| tasks_name             | varchar(255) | NO   |     | NULL    |                |
+| tasks_description      | varchar(255) | NO   |     | NULL    |                |
+| tasks_usedartifact     | varchar(255) | NO   |     | NULL    |                |
+| tasks_producedartifact | varchar(255) | NO   |     | NULL    |                |
+| tasks_role             | varchar(255) | NO   |     | NULL    |                |
+| tasks_effortcategories | varchar(255) | NO   |     | NULL    |                |
++------------------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> create table conditions(conditions_id int PRIMARY KEY AUTO_INCREMENT, conditions_name varchar(255) NOT NULL, conditions_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> describe conditions;
++------------------------+--------------+------+-----+---------+----------------+
+| Field                  | Type         | Null | Key | Default | Extra          |
++------------------------+--------------+------+-----+---------+----------------+
+| conditions_id          | int          | NO   | PRI | NULL    | auto_increment |
+| conditions_name        | varchar(255) | NO   |     | NULL    |                |
+| conditions_description | varchar(255) | NO   |     | NULL    |                |
++------------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table plans(plans_id int PRIMARY KEY AUTO_INCREMENT, plans_name varchar(255) NOT NULL, plans_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> describe plans;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| plans_id          | int          | NO   | PRI | NULL    | auto_increment |
+| plans_name        | varchar(255) | NO   |     | NULL    |                |
+| plans_description | varchar(255) | NO   |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table interruptions(interruptions_id int PRIMARY KEY AUTO_INCREMENT, interruptions_name varchar(255) NOT NULL, interruptions_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> describe interruptions;
++---------------------------+--------------+------+-----+---------+----------------+
+| Field                     | Type         | Null | Key | Default | Extra          |
++---------------------------+--------------+------+-----+---------+----------------+
+| interruptions_id          | int          | NO   | PRI | NULL    | auto_increment |
+| interruptions_name        | varchar(255) | NO   |     | NULL    |                |
+| interruptions_description | varchar(255) | NO   |     | NULL    |                |
++---------------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table defects(defects_id int PRIMARY KEY AUTO_INCREMENT, defects_name varchar(255) NOT NULL, defects_description varchar(255) NOT NULL);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> describe defects;
++---------------------+--------------+------+-----+---------+----------------+
+| Field               | Type         | Null | Key | Default | Extra          |
++---------------------+--------------+------+-----+---------+----------------+
+| defects_id          | int          | NO   | PRI | NULL    | auto_increment |
+| defects_name        | varchar(255) | NO   |     | NULL    |                |
+| defects_description | varchar(255) | NO   |     | NULL    |                |
++---------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!
+mysql> use petsdbcs;
+Database changed
+mysql> describe effortcategories;
++------------------------------+--------------+------+-----+---------+----------------+
+| Field                        | Type         | Null | Key | Default | Extra          |
++------------------------------+--------------+------+-----+---------+----------------+
+| effortcategories_id          | int          | NO   | PRI | NULL    | auto_increment |
+| effortcategories_name        | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_description | varchar(255) | NO   |     | NULL    |                |
++------------------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> alter table effortcategories
+    -> ADD effortcategories_artifacts varchar(255)
+    -> ADD effortcategories_plans varchar(255)
+    -> ADD effortcategories_interruptions varchar(255)
+    -> ADD effortcategories_defects varchar(255)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ADD effortcategories_plans varchar(255)
+ADD effortcategories_interruptions varch' at line 3
+mysql> Terminal close -- exit!
+mysql> use petsdbcs;
+Database changed
+mysql> describe effortcategories;
++------------------------------+--------------+------+-----+---------+----------------+
+| Field                        | Type         | Null | Key | Default | Extra          |
++------------------------------+--------------+------+-----+---------+----------------+
+| effortcategories_id          | int          | NO   | PRI | NULL    | auto_increment |
+| effortcategories_name        | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_description | varchar(255) | NO   |     | NULL    |                |
++------------------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table effortcategories
+    -> ADD effortcategories_artifacts varchar(255);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table effortcategories
+    -> ADD effortcategories_plans varchar(255);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table effortcategories
+    -> ADD effortcategories_interruptions varchar(255);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table effortcategories
+    -> ADD effortcategories_defects varchar(255);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe effortcategories;
++--------------------------------+--------------+------+-----+---------+----------------+
+| Field                          | Type         | Null | Key | Default | Extra          |
++--------------------------------+--------------+------+-----+---------+----------------+
+| effortcategories_id            | int          | NO   | PRI | NULL    | auto_increment |
+| effortcategories_name          | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_description   | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_artifacts     | varchar(255) | YES  |     | NULL    |                |
+| effortcategories_plans         | varchar(255) | YES  |     | NULL    |                |
+| effortcategories_interruptions | varchar(255) | YES  |     | NULL    |                |
+| effortcategories_defects       | varchar(255) | YES  |     | NULL    |                |
++--------------------------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!
+mysql> use petsdbcs;
+Database changed
+mysql> describe effortcategories;
++--------------------------------+--------------+------+-----+---------+----------------+
+| Field                          | Type         | Null | Key | Default | Extra          |
++--------------------------------+--------------+------+-----+---------+----------------+
+| effortcategories_id            | int          | NO   | PRI | NULL    | auto_increment |
+| effortcategories_name          | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_description   | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_artifacts     | varchar(255) | YES  |     | NULL    |                |
+| effortcategories_plans         | varchar(255) | YES  |     | NULL    |                |
+| effortcategories_interruptions | varchar(255) | YES  |     | NULL    |                |
+| effortcategories_defects       | varchar(255) | YES  |     | NULL    |                |
++--------------------------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.01 sec)
+
+mysql> alter table effortcategories modify effortcategories_artifacts varchar(255) NOT NULL;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table effortcategories modify effortcategories_plans varchar(255) NOT NULL;
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table effortcategories modify effortcategories_interruptions varchar(255) NOT NULL;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table effortcategories modify effortcategories_defects varchar(255) NOT NULL;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe effortcategories;
++--------------------------------+--------------+------+-----+---------+----------------+
+| Field                          | Type         | Null | Key | Default | Extra          |
++--------------------------------+--------------+------+-----+---------+----------------+
+| effortcategories_id            | int          | NO   | PRI | NULL    | auto_increment |
+| effortcategories_name          | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_description   | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_artifacts     | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_plans         | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_interruptions | varchar(255) | NO   |     | NULL    |                |
+| effortcategories_defects       | varchar(255) | NO   |     | NULL    |                |
++--------------------------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!
